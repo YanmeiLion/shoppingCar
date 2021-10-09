@@ -1,7 +1,8 @@
 import dva from 'dva';
 import './index.css';
 import { createBrowserHistory as createHistory } from 'history'
-import productsModel from './models/products'
+import productsModel from './models/productsModel'
+import sizeModel from './models/sizeModel';
 
 // 1. 初始化dva对象
 const app = dva({
@@ -13,6 +14,7 @@ const app = dva({
 
 // 3. Model
 app.model(productsModel);
+app.model(sizeModel);
 
 // 4. Router
 app.router(require('./router').default);

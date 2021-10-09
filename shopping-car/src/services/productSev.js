@@ -1,12 +1,3 @@
-// import axios from "axios";
-// // 获取商品列表数据
-// const getProductData = async (obj) => {
-//   const {
-//     data: { data },
-//   } = await axios.get("http://120.55.193.14:3030/shoppingCat", { params: obj });
-//   return data;
-// };
-// export { getProductData };
 
 
 import request from '../utils/request';
@@ -14,10 +5,7 @@ import request from '../utils/request';
 const baseUrl = 'http://120.55.193.14:3030'
 
 export function findData(params){
-    return request(baseUrl+'/shoppingCat', {
-        method: 'get',
-        params: params
-    })
+    return request(baseUrl+'/shoppingCat', {params})
 }
 
 // get提交
