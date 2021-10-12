@@ -1,0 +1,107 @@
+.goodsInfo{
+    width: 100%;
+    height: 85%;
+    overflow-y: scroll;
+    // overflow-y: visible;
+}
+// ::-webkit-scrollbar {
+    // display: none;
+    // width: 8px;
+    // background-color: #ddd;
+// }
+
+
+.goodsOne{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    box-sizing: border-box;
+    border-top: 1px #ddd solid;
+    border-left: none;
+    border-right: none;
+    margin-bottom: 5px;
+
+    div:nth-child(1){
+        width: 25%;
+        img{
+            width: 75%;
+            margin-left: 5px;
+            margin-top: 5px;   
+        }
+    }
+    div:nth-child(2){
+        width: 50%;
+        p{
+            margin: 0;
+            color: rgb(85, 85, 85);
+            font-size: 12px;
+        }
+        .title{
+            margin-top: 15px;
+            font-size: 16px;
+            color: black;
+        }
+    }
+    div:nth-child(3){
+        padding-right: 5px;
+        box-sizing: border-box;
+        text-align: right;
+        width: 25%;
+        P{
+            margin: 0;
+        }
+        p:nth-child(1){
+            font-size: 12px;
+            text-align: right;
+            color: rgb(201, 116, 113);
+        }
+        p:hover{
+            cursor: pointer;
+        }
+        .price{
+            color: rgb(252, 67, 67);
+            margin: 10px 0;
+            font-weight: bold;
+            margin-top: 6px;
+            font-size: 18px;
+        }
+        Button{
+            width: 25px;
+            height: 25px;
+            padding: 0;
+            margin-left: 5px;
+            text-align: center;
+            color: black;
+        }
+    }
+}
+
+.ft{
+    position: absolute;    
+    width: 100%;
+    margin: auto;
+    left: 0;
+    right: 0;
+    padding: 0 24px;
+    bottom: 0;
+    background-color: rgba(240, 240, 240, 1);
+    padding-bottom: 20px;
+
+    div{
+        text-align: right;
+        box-sizing: border-box;
+        padding-right: 5px;
+        margin-bottom: 20px;
+        margin-top: 10px;
+        span{
+            color: rgb(252, 67, 67);
+            font-weight: bold;
+            font-size: 18px;
+            margin-left: 10px;
+        }
+    }
+    Button{
+        width: 100%;
+        height: 35px;
+    }
+}

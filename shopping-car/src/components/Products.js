@@ -8,7 +8,7 @@ const Products = (props) => {
 	const { listData } = props.product
 	const { size, filter } = props.checkSize
 	const [loading, setLoading] = useState(true)
-	const [notData, setNotData] = useState(true)  // 有数据
+	const [notData, setNotData] = useState(true)  // 有数据	
 
 	// 发送请求
 	useEffect(() => {
@@ -34,8 +34,32 @@ const Products = (props) => {
 		}
 	}, [listData])
 
+	useEffect(() => {
+		const data = JSON.parse(localStorage.getItem('carData'))
+		if(data){
+			props.dispatch({
+				type: 'cars/carsList',
+				payload: data
+			})
+		}
+	}, [])
 
-
+	// 添加购物车
+	const addToCars = (id) => {
+		let obj = {}
+		listData.filter(item => {
+			if(item.id == id){
+				obj = {
+					...item,
+					number: 1
+				}
+			}
+		})		
+		props.dispatch({
+			type: 'cars/saveData',
+			payload: obj
+		})
+	}
 
 
 	return (
@@ -59,7 +83,7 @@ const Products = (props) => {
 										{item.availableSizes.map((avaItem) => <span key={avaItem}> {avaItem}, </span>)}
 									</div>
 									<p className={styles.price}> $ <span> {item.price} </span> </p>
-									<Button type='primary'>Add to Cart</Button>
+									<Button type='primary' onClick={() => addToCars(item.id)}>Add to Cart</Button>
 								</div>
 							)
 						})

@@ -26,7 +26,7 @@ const CheckSize = (props) => {
 	// 监听size, 传值size
 	useEffect(() => {
 		props.dispatch({
-			type: 'checkSize/getSizeData',
+			type: 'checkSize/saveSize',
 			payload: size
 		})
 	}, [size])

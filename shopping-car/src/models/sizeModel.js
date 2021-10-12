@@ -13,19 +13,6 @@ export default {
 
 
     effects: {
-        *getSizeData({ payload }, {call, put}){
-            yield put({
-                type: 'saveSize',
-                payload
-            })
-        },
-
-        *chooseFilter({ payload }, {call, put}){
-            yield put({
-                type: 'saveFilter',
-                payload
-            })
-        }
         
     },
 

@@ -8,7 +8,7 @@ const sortGoods = (props) => {
 
 	const handleChange = (value) => {
 		props.dispatch({
-			type: 'checkSize/chooseFilter',
+			type: 'checkSize/saveFilter',
 			payload: value
 		})
 	}
