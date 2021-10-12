@@ -1,5 +1,7 @@
 import { findData } from '../services/productSev'
 
+// import getProductData from '../services/productSev'
+
 export default {
     namespace: 'product',
 

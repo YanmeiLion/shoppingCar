@@ -5,16 +5,20 @@ import request from '../utils/request';
 const baseUrl = 'http://120.55.193.14:3030'
 
 export function findData(params){
+    console.log('1', params)
     return request(baseUrl+'/shoppingCat', {params})
 }
 
-// get提交
-// export function findAllUser() {
-    // return request(baseURL+'/users/getAccountList2');
-// }
+
+// import axios from "axios";
+// const getProductData = async (obj) => {
+//     console.log(obj);
+//     const {
+//         data: { data },
+//     } = await axios.get("http://120.55.193.14:3030/shoppingCat", { params: obj });
+//     return data;
+// };
+
+// export default getProductData;
 
 
-// post提交
-// export function addUser(params) {
-    // return request(baseURL+'/users/accountadd',{method:"post",body:params})
-// }

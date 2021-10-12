@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'dva';
-// import { useUpdateEffect } from "ahooks";
 import { Button, Drawer, Popconfirm, message, Modal } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import styles from './styles/cars.less'
