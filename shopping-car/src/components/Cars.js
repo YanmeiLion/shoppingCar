@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'dva';
 // import { useUpdateEffect } from "ahooks";
-import { Button, Drawer, Popconfirm, message } from 'antd';
+import { Button, Drawer, Popconfirm, message, Modal } from 'antd';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
 import styles from './styles/cars.less'
 
+
+
 const Cars = (props) => {
+    const { confirm } = Modal;
     const { carsData } = props.cars
 
     const [visible, setVisible] = useState(false);
@@ -26,14 +30,14 @@ const Cars = (props) => {
     useEffect(() => {
         getPriceAll(carsData)
     }, [carsData])
-    
+
     // 计算总价
     const getPriceAll = (arr) => {
         const result = arr.reduce((item, next) => {
             return item + (next.number * next.price);
         }, 0)
         setPriceAll(result.toFixed(2))
-    } 
+    }
 
     // 数量+-
     const changeNum = (id, value) => {
@@ -43,15 +47,31 @@ const Cars = (props) => {
                 id, value
             }
         })
-        getPriceAll(carsData)        
+        getPriceAll(carsData)
     }
 
     // 确定之后，删除
-    const confirm = (id) => {
+    const delgoods = (id) => {
         props.dispatch({
             type: 'cars/delGoods',
             payload: id
         })
+    }
+    const settlement = () => {
+        confirm({
+            title: '是否结算所有商品？',
+            icon: <ExclamationCircleOutlined />,
+            content: `所有商品价格：${priceAll}`,
+            okText: "确定",
+            cancelText: "取消",
+            onOk() {
+                message.success('所有商品已结算。')
+                clearCar()
+            },
+            onCancel() {
+                console.log('Cancel');
+            },
+        });
     }
 
     // 清除购物车
@@ -60,6 +80,7 @@ const Cars = (props) => {
             type: 'cars/clearGoods'
         })
     }
+
 
     return (
         <>
@@ -80,7 +101,7 @@ const Cars = (props) => {
                                     <div>
                                         <Popconfirm
                                             title="确定删除这个商品吗？"
-                                            onConfirm={() => confirm(item.id)}
+                                            onConfirm={() => delgoods(item.id)}
                                             okText="Yes"
                                             cancelText="No"
                                         >
@@ -98,8 +119,10 @@ const Cars = (props) => {
                 </div>
 
                 <div className={styles.ft}>
-                    <div> 总价: <span> $ {priceAll} </span> </div>
-                    <Button type='primary' onClick={clearCar}> 清空购物车 </Button>
+                    <div> 总价: <span> $ {priceAll} </span>  <br />
+                        <button onClick={settlement}>结算</button>
+                    </div>
+                    <Button className={styles.clear} type='primary' onClick={clearCar}> 清空购物车 </Button>
                 </div>
 
             </Drawer>
