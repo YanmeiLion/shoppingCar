@@ -48,12 +48,13 @@ const Products = (props) => {
 	const addToCars = (id) => {
 		let obj = {}
 		listData.filter(item => {
-			if(item.id == id){
+			if(item.id === id){
 				obj = {
 					...item,
 					number: 1
 				}
 			}
+      return obj
 		})		
 		props.dispatch({
 			type: 'cars/saveData',
